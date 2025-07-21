@@ -1,0 +1,1140 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #2e3b55; /* Dark blue background matching the images */
+  background-image: linear-gradient(45deg, #2e3b55, #3b4d6b, #2e3b55); /* Subtle gradient for animation */
+  background-size: 200% 200%; /* Larger size to allow gradient shifting */
+  animation: gradientShift 10s infinite alternate; /* Apply animation */
+  display: flex;
+  justify-content: center; /* Center the container horizontally */
+  align-items: flex-start; /* Align content to the top, allowing scroll */
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  position: relative; /* Needed for absolute positioning of flowers */
+}
+
+@keyframes gradientShift {
+  0% {
+      background-position: 0% 50%;
+  }
+  100% {
+      background-position: 100% 50%;
+  }
+}
+
+/* --- Flower Animation Styles --- */
+.flower {
+  position: absolute;
+  width: 15px; /* Adjust size of "flower" */
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.1); /* Translucent white/light color */
+  border-radius: 50%; /* Makes it a circle, like a simple petal */
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Subtle glow */
+  opacity: 0; /* Start hidden */
+  z-index: 0; /* Keep behind content */
+  pointer-events: none; /* Make sure they don't block clicks */
+}
+
+/* Optional: Add a few "petals" for a slightly more complex shape if not using images */
+.flower::before, .flower::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: inherit; /* Same color as main flower */
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.flower::before {
+  transform: rotate(45deg); /* Rotate to form a cross-like shape */
+}
+
+.flower::after {
+  transform: rotate(-45deg);
+}
+
+
+@keyframes flowAnimation {
+  0% {
+      transform: translateY(-50px) translateX(var(--start-x, 0px)) scale(var(--scale, 1)) rotate(0deg);
+      opacity: 0;
+  }
+  10% {
+      opacity: var(--max-opacity, 0.4); /* Fade in */
+  }
+  90% {
+      opacity: var(--max-opacity, 0.4); /* Stay visible */
+  }
+  100% {
+      transform: translateY(calc(100vh + 50px)) translateX(var(--end-x, 0px)) scale(var(--scale, 1)) rotate(var(--rotate-end, 360deg));
+      opacity: 0; /* Fade out */
+  }
+}
+
+
+.container {
+  width: 100%;
+  max-width: 400px; /* Typical mobile width */
+  background-color: transparent; /* Make container background transparent so body background shows */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Keep shadow for a subtle effect */
+  overflow-y: auto; /* Enable scrolling for content */
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 70px; /* Space for fixed bottom navigation on ALL sizes where it's visible */
+  position: relative; /* For header positioning */
+  z-index: 1; /* Ensure container is above flowers */
+  min-height: 100vh; /* Ensure container fills viewport height for internal scrolling */
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: rgba(46, 59, 85, 1); /* Opaque dark blue for all headers as per screenshot */
+  border-bottom: none; /* Remove border from screenshot */
+  width: 100%;
+  box-sizing: border-box; /* Include padding in width calculation */
+  position: sticky; /* Sticky header */
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #fff; /* White text for logo */
+  font-size: 1.2em;
+  padding-left: 5px; /* Adjust as per screenshot */
+}
+
+.logo img {
+  margin-right: 8px;
+  border-radius: 50%; /* If your logo is circular */
+  width: 30px; /* Adjust logo size */
+  height: 30px;
+}
+
+/* Page Header Specific Styles (Packages, Invitation, Profile) */
+#packages-header, #invitation-header, #profile-header {
+  justify-content: flex-start;
+  padding-left: 0; /* Already zero */
+  background-color: rgba(46, 59, 85, 1); /* Consistent opaque dark blue */
+  color: #fff;
+  border-bottom: none; /* Remove border from screenshot */
+}
+
+#packages-header .back-arrow, #invitation-header .back-arrow, #profile-header .back-arrow {
+  color: #fff;
+  font-size: 1.3em; /* Slightly larger icon */
+  padding: 0 15px;
+}
+
+#packages-header .header-title, #invitation-header .header-title, #profile-header .header-title {
+  color: #fff;
+  flex-grow: 1;
+  text-align: center; /* Centered title with back arrow */
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-right: 40px; /* Counteract back arrow width to center title */
+}
+
+
+/* Hero Section (Dashboard) */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: transparent; /* Match screenshot, hero image fills */
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5em;
+  background: transparent; /* No background for hero text as per screenshot */
+  padding: 0; /* No padding for hero text as per screenshot */
+  border-radius: 0; /* No border-radius for hero text as per screenshot */
+}
+
+.hero-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.hero-brand {
+  margin-right: 10px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+.dot.active {
+  background-color: #fff;
+}
+
+/* Features Grid (Dashboard) */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  padding: 20px;
+  background-color: transparent; /* Transparent background */
+  color: #fff;
+  text-align: center;
+  border-radius: 0; /* No border-radius */
+  margin-bottom: 0px; /* Remove margin-bottom */
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  padding: 15px 5px; /* Adjust padding */
+  border-radius: 8px; /* Rounded corners for features */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.icon-circle {
+  background-color: transparent; /* No background for icon circle as per screenshot */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.icon-circle i {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.feature-item span {
+  font-size: 0.85em;
+}
+
+/* Income Balance Section (Dashboard) */
+.income-balance-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px; /* Adjusted padding */
+  background-color: transparent; /* Allow body background to show */
+  margin-bottom: 0px; /* No margin-bottom */
+}
+
+.card {
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Stronger shadow on transparent cards */
+  text-align: center;
+  flex: 1;
+  margin: 0 5px; /* Adjusted margin */
+  color: #fff; /* White text for cards */
+}
+
+.card:first-child {
+  margin-left: 0;
+}
+.card:last-child {
+  margin-right: 0;
+}
+
+
+.card h3 {
+  margin-top: 0;
+  color: #ccc; /* Lighter text for heading */
+  font-size: 0.9em;
+}
+
+.card p {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+/* Products Section (Dashboard) */
+.products-section {
+  padding: 20px;
+  background-color: transparent; /* Transparent background */
+  margin-top: 10px; /* Add margin-top to separate from cards */
+  border-radius: 0; /* No border-radius */
+  flex-grow: 1; /* Ensure this section takes up available space */
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 0 5px; /* Add padding to align with product items */
+}
+
+.products-header h2 {
+  margin: 0;
+  font-size: 1.1em;
+  color: #fff; /* White text */
+}
+
+.view-more {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.product-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+}
+
+.product-image {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.product-details h3 {
+  margin: 0 0 5px 0;
+  font-size: 1em;
+  color: #fff; /* White text */
+}
+
+.product-details .price {
+  color: #ccc; /* Lighter text */
+  font-size: 0.9em;
+  margin-bottom: 3px;
+}
+
+.product-details .daily-income {
+  color: #28a745;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+/* Packages List Section */
+#packages-content {
+  background-color: transparent; /* Transparent background */
+  padding: 15px;
+  flex-grow: 1;
+  border-radius: 0; /* No border-radius */
+}
+
+.package-item {
+  display: flex;
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  color: #fff; /* White text */
+}
+
+.package-image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.package-details {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 5px 10px;
+  padding-right: 10px; /* Add some padding to the right for values to breathe */
+}
+
+.package-details h3 {
+  grid-column: 1 / span 2;
+  margin: 0;
+  font-size: 1.1em;
+  color: #fff; /* White text */
+  margin-bottom: 5px;
+}
+
+.package-details p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #ccc; /* Lighter text */
+  display: contents; /* Allows the span to flow directly after the text */
+}
+
+.package-value {
+  font-weight: bold;
+  color: #fff; /* White text */
+  justify-self: end;
+}
+
+.package-value.income {
+  color: #28a745;
+}
+
+
+/* Invitation Content Specific Styles */
+#invitation-content {
+  background-color: transparent; /* Transparent background */
+  padding: 20px;
+  color: #fff;
+  flex-grow: 1;
+  border-radius: 0; /* No border-radius */
+}
+
+.invitation-options {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.invitation-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  padding: 20px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.invitation-item .icon-circle {
+  background-color: transparent; /* No background for icon circle */
+  width: 60px;
+  height: 60px;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  box-shadow: none; /* No shadow */
+}
+
+.invitation-item span {
+  font-size: 0.9em;
+}
+
+.invite-link-section {
+  margin-bottom: 30px;
+}
+
+.invite-link-section h3, .share-to-section h3, .recharge-rebate-section h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: #fff;
+  padding-left: 5px; /* Adjust padding to match screenshot */
+}
+
+.link-box {
+  display: flex;
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.link-box input {
+  flex-grow: 1;
+  border: none;
+  padding: 12px 15px;
+  font-size: 0.9em;
+  color: #fff; /* White text for input */
+  background-color: transparent; /* Transparent input background */
+  outline: none;
+}
+
+.link-box .copy-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.link-box .copy-button:active {
+  background-color: #0056b3;
+}
+
+.share-to-section {
+  margin-bottom: 30px;
+}
+
+.share-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  padding-left: 5px; /* Adjust padding to match screenshot */
+}
+
+.share-icon-circle {
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+/* Specific share icon colors from screenshot if needed, otherwise use icon-circle background */
+.share-icon-circle i {
+  color: #fff; /* Ensure icon is white regardless of parent background */
+}
+
+.view-team-section {
+  margin-bottom: 30px;
+}
+
+.view-team-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.view-team-button:active {
+  background-color: #0056b3;
+}
+
+.recharge-rebate-section {
+  margin-bottom: 20px;
+}
+
+.rebate-table {
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border-radius: 8px;
+  overflow: hidden;
+  color: #fff; /* White text for table content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Lighter transparent border */
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row.header-row {
+  background-color: #3b4d6b; /* Consistent background, no special header row color */
+  font-weight: bold;
+  color: #ccc;
+}
+
+/* Account Settings Content Specific Styles */
+#profile-content {
+  background-color: transparent; /* Transparent background */
+  padding: 20px;
+  color: #fff;
+  flex-grow: 1;
+  border-radius: 0; /* No border-radius */
+}
+
+.profile-header-section {
+  text-align: left;
+  margin-bottom: 20px;
+  padding-left: 5px; /* Adjust padding to match screenshot */
+}
+
+.profile-header-section .greeting {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.profile-header-section .good-afternoon {
+  font-size: 0.9em;
+  color: #ccc;
+  margin-top: 0;
+}
+
+.balance-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.balance-card {
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.balance-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 0.85em;
+  color: #ccc;
+}
+
+.balance-card p {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.summary-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 columns */
+  gap: 10px;
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 0.8em;
+  color: #ccc;
+}
+
+.summary-item .value {
+  font-weight: bold;
+  color: #fff;
+  margin-top: 3px;
+  font-size: 1.1em;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.action-button {
+  flex: 1;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.blue-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.blue-btn:active {
+  background-color: #0056b3;
+}
+
+.profile-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-feature-item {
+  background-color: #3b4d6b; /* Darker blue background as per screenshot */
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile-feature-item .icon-box {
+  background-color: transparent; /* No background for icon box as per screenshot */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-feature-item .icon-box i {
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.profile-feature-item span {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
+.profile-feature-item small {
+  font-size: 0.7em;
+  color: #ccc;
+  line-height: 1.2;
+}
+
+
+/* Bottom Navigation (Default for Mobile) */
+.bottom-navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff; /* White background as per screenshot */
+  border-top: 1px solid #eee; /* Light border */
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%; /* Full width on mobile */
+  box-sizing: border-box;
+  z-index: 1001;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #888; /* Default color */
+  font-size: 0.75em;
+  flex: 1;
+}
+
+.nav-item i {
+  font-size: 1.4em;
+  margin-bottom: 3px;
+}
+
+.nav-item.active {
+  color: #007bff; /* Blue active color */
+}
+
+/* Utility class for hiding elements */
+.hidden {
+  display: none !important;
+}
+
+
+/* --------------------------------------------------- */
+/* RESPONSIVE DESIGN - MEDIA QUERIES                  */
+/* --------------------------------------------------- */
+
+/* Small Tablets and Larger Phones (e.g., min-width: 600px) */
+@media (min-width: 600px) {
+  .container {
+      max-width: 600px;
+      padding-bottom: 70px; /* Keep padding for nav */
+      border-radius: 10px; /* Rounded corners for the container */
+      align-self: center; /* Center the container vertically */
+  }
+
+  body {
+      align-items: center; /* Center the container vertically when its height is less than 100vh */
+  }
+
+  .header {
+      padding: 20px;
+  }
+
+  .hero-section {
+      height: 250px;
+  }
+
+  .hero-text {
+      font-size: 1.8em;
+  }
+
+  .hero-logo {
+      width: 50px;
+      height: 50px;
+  }
+
+  .features-grid {
+      grid-template-columns: repeat(6, 1fr);
+      padding: 25px;
+  }
+
+  .icon-circle {
+      width: 60px;
+      height: 60px;
+  }
+
+  .icon-circle i {
+      font-size: 1.8em;
+  }
+
+  .feature-item span {
+      font-size: 0.9em;
+  }
+
+  .income-balance-section {
+      padding: 15px 25px;
+  }
+
+  .card {
+      padding: 20px;
+  }
+
+  .card h3 {
+      font-size: 1em;
+  }
+
+  .card p {
+      font-size: 1.6em;
+  }
+
+  .products-section {
+      padding: 25px;
+  }
+
+  .product-item {
+      padding: 20px;
+  }
+
+  .product-image {
+      width: 80px;
+      height: 80px;
+  }
+
+  .product-details h3 {
+      font-size: 1.1em;
+  }
+
+  .package-item {
+      padding: 20px;
+  }
+
+  .package-image {
+      width: 100px;
+      height: 100px;
+  }
+
+  .package-details {
+      font-size: 1em;
+  }
+
+  .invitation-options {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+  }
+
+  .profile-features-grid {
+      grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bottom-navigation {
+      max-width: 600px; /* Max width of the nav matches container max-width */
+      left: 50%; /* Center it horizontally */
+      transform: translateX(-50%); /* Adjust for centering */
+      border-radius: 10px 10px 0 0; /* Optional: slight top border radius */
+  }
+
+  #packages-header .header-title,
+  #invitation-header .header-title,
+  #profile-header .header-title {
+      padding-right: 0;
+      text-align: left;
+  }
+
+  .flower {
+      width: 20px;
+      height: 20px;
+  }
+}
+
+/* Tablets and Small Laptops (e.g., min-width: 768px) */
+@media (min-width: 768px) {
+  .container {
+      max-width: 768px;
+  }
+
+  .header .logo {
+      font-size: 1.4em;
+  }
+
+  .hero-section {
+      height: 300px;
+  }
+
+  .hero-text {
+      font-size: 2em;
+  }
+
+  .features-grid {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      padding: 30px;
+  }
+
+  .income-balance-section {
+      padding: 20px 30px;
+  }
+
+  .products-section {
+      padding: 30px;
+  }
+
+  .invitation-options {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .profile-features-grid {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .bottom-navigation {
+      max-width: 768px;
+  }
+
+  .flower {
+      width: 25px;
+      height: 25px;
+  }
+}
+
+/* Desktops and Larger Laptops (e.g., min-width: 1024px) */
+@media (min-width: 1024px) {
+  .container {
+      max-width: 960px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .header {
+      padding: 25px;
+  }
+
+  .header .logo {
+      font-size: 1.6em;
+  }
+
+  .header .header-title {
+      font-size: 1.4em;
+  }
+
+  .hero-section {
+      height: 350px;
+  }
+
+  .hero-text {
+      font-size: 2.2em;
+      padding: 10px 15px;
+  }
+
+  .features-grid {
+      gap: 25px;
+      padding: 35px;
+  }
+
+  .icon-circle {
+      width: 70px;
+      height: 70px;
+  }
+
+  .icon-circle i {
+      font-size: 2em;
+  }
+
+  .feature-item span {
+      font-size: 1em;
+  }
+
+  .income-balance-section {
+      padding: 25px 35px;
+  }
+
+  .card {
+      padding: 25px;
+  }
+
+  .card h3 {
+      font-size: 1.1em;
+  }
+
+  .card p {
+      font-size: 1.8em;
+  }
+
+  .products-section {
+      padding: 35px;
+  }
+
+  .product-item {
+      padding: 25px;
+  }
+
+  .product-image {
+      width: 90px;
+      height: 90px;
+  }
+
+  .product-details h3 {
+      font-size: 1.2em;
+  }
+
+  .package-item {
+      padding: 25px;
+  }
+
+  .package-image {
+      width: 110px;
+      height: 110px;
+  }
+
+  .package-details {
+      font-size: 1.05em;
+  }
+
+  .invite-link-section input,
+  .link-box .copy-button {
+      padding: 15px 20px;
+      font-size: 1em;
+  }
+
+  .share-icon-circle {
+      width: 50px;
+      height: 50px;
+      font-size: 1.4em;
+  }
+
+  .view-team-button, .action-button {
+      padding: 18px;
+      font-size: 1.2em;
+  }
+
+  .rebate-table .table-row {
+      padding: 15px 20px;
+  }
+
+  .profile-header-section .greeting {
+      font-size: 1.8em;
+  }
+
+  .profile-header-section .good-afternoon {
+      font-size: 1em;
+  }
+
+  .balance-card h3 {
+      font-size: 0.95em;
+  }
+
+  .balance-card p {
+      font-size: 1.5em;
+  }
+
+  .summary-details-grid {
+      padding: 20px;
+  }
+
+  .summary-item {
+      font-size: 0.9em;
+  }
+
+  .summary-item .value {
+      font-size: 1.2em;
+  }
+
+  .profile-feature-item .icon-box {
+      width: 60px;
+      height: 60px;
+  }
+
+  .profile-feature-item .icon-box i {
+      font-size: 1.8em;
+  }
+
+  .profile-feature-item span {
+      font-size: 1em;
+  }
+
+  .profile-feature-item small {
+      font-size: 0.8em;
+  }
+
+  .bottom-navigation {
+      max-width: 960px;
+  }
+
+  .flower {
+      width: 30px;
+      height: 30px;
+  }
+}
+
+/* Even Larger Desktops (e.g., min-width: 1200px) */
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1000px;
+  }
+
+  .bottom-navigation {
+      max-width: 1000px;
+  }
+
+  .flower {
+      width: 35px;
+      height: 35px;
+  }
+}

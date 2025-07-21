@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobivest</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <header id="dashboard-header" class="header">
+            <div class="logo">
+                <img src="https://via.placeholder.com/30" alt="Mobivest Logo"> Mobivest
+            </div>
+        </header>
+
+        <header id="packages-header" class="header hidden">
+            <span class="back-arrow"><i class="fas fa-arrow-left"></i></span>
+            <h1 class="header-title">Packages</h1>
+        </header>
+
+        <header id="invitation-header" class="header hidden">
+            <span class="back-arrow"><i class="fas fa-arrow-left"></i></span>
+            <h1 class="header-title">Invitation</h1>
+        </header>
+
+        <header id="profile-header" class="header hidden">
+            <span class="back-arrow"><i class="fas fa-arrow-left"></i></span>
+            <h1 class="header-title">Account Settings</h1>
+        </header>
+
+
+        <main id="dashboard-content">
+            <section class="hero-section">
+                <img src="https://via.placeholder.com/400x200?text=Mobivest+Hero" alt="Hero Image" class="hero-image">
+                <div class="hero-text">
+                    <img src="https://via.placeholder.com/40" alt="Mobivest Logo" class="hero-logo">
+                    <span class="hero-brand">Mobivest</span>
+                </div>
+                <div class="dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </section>
+
+            <section class="features-grid">
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-money-bill-wave"></i></div>
+                    <span>Recharge</span>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-wallet"></i></div>
+                    <span>Withdraw</span>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
+                    <span>History</span>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-users"></i></div>
+                    <span>Team</span>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-gift"></i></div>
+                    <span>Promo Code</span>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-question"></i></div>
+                    <span>Quiz</span>
+                </div>
+                <div class="feature-item">
+                    <div class="icon-circle"><i class="fas fa-tasks"></i></div>
+                    <span>Daily Task</span>
+                </div>
+            </section>
+
+            <section class="income-balance-section">
+                <div class="card">
+                    <h3>Total Income</h3>
+                    <p>₦0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Balance</h3>
+                    <p>₦300.00</p>
+                </div>
+            </section>
+
+            <section class="products-section">
+                <div class="products-header">
+                    <h2>Our Products</h2>
+                    <a href="#" class="view-more">View More</a>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/70" alt="Product Image" class="product-image">
+                    <div class="product-details">
+                        <h3>NEWBIE</h3>
+                        <p class="price">Price ₦20000</p>
+                        <p class="daily-income">Daily Income ₦650</p>
+                    </div>
+                </div>
+                </section>
+        </main>
+
+        <main id="packages-content" class="hidden">
+            <section class="packages-list">
+                <div class="package-item">
+                    <img src="https://via.placeholder.com/90" alt="Package Image" class="package-image">
+                    <div class="package-details">
+                        <h3>NEWBIE</h3>
+                        <p>Price <span class="package-value">₦20000</span></p>
+                        <p>Daily Income <span class="package-value income">₦650</span></p>
+                        <p>Cycle <span class="package-value">90 days</span></p>
+                        <p>Total Income <span class="package-value">₦58500</span></p>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <img src="https://via.placeholder.com/90" alt="Package Image" class="package-image">
+                    <div class="package-details">
+                        <h3>Mobivest 1</h3>
+                        <p>Price <span class="package-value">₦50000</span></p>
+                        <p>Daily Income <span class="package-value income">₦1550</span></p>
+                        <p>Cycle <span class="package-value">90 days</span></p>
+                        <p>Total Income <span class="package-value">₦139500</span></p>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <img src="https://via.placeholder.com/90" alt="Package Image" class="package-image">
+                    <div class="package-details">
+                        <h3>Mobivest</h3>
+                        <p>Price <span class="package-value">₦3000</span></p>
+                        <p>Daily Income <span class="package-value income">₦165</span></p>
+                        <p>Cycle <span class="package-value">40 days</span></p>
+                        <p>Total Income <span class="package-value">₦6600</span></p>
+                    </div>
+                </div>
+                <div class="package-item">
+                    <img src="https://via.placeholder.com/90" alt="Package Image" class="package-image">
+                    <div class="package-details">
+                        <h3>Mobivest</h3>
+                        <p>Price <span class="package-value">₦5000</span></p>
+                        <p>Daily Income <span class="package-value income">₦275</span></p>
+                        <p>Cycle <span class="package-value">40 days</span></p>
+                        <p>Total Income <span class="package-value">₦11000</span></p>
+                    </div>
+                </div>
+                </section>
+        </main>
+
+        <main id="invitation-content" class="hidden">
+            <section class="invitation-options">
+                <div class="invitation-item">
+                    <div class="icon-circle"><i class="fas fa-share-alt"></i></div>
+                    <span>Share link</span>
+                </div>
+                <div class="invitation-item">
+                    <div class="icon-circle"><i class="fas fa-user-plus"></i></div>
+                    <span>Friends register</span>
+                </div>
+                <div class="invitation-item">
+                    <div class="icon-circle"><i class="fas fa-chart-line"></i></div>
+                    <span>Friends to Invest</span>
+                </div>
+            </section>
+
+            <section class="invite-link-section">
+                <h3>Invite Link</h3>
+                <div class="link-box">
+                    <input type="text" id="inviteLinkInput" value="https://mobivest.shop/register?code=Aditechdata" readonly>
+                    <button class="copy-button">Copy</button>
+                </div>
+            </section>
+
+            <section class="share-to-section">
+                <h3>Share To</h3>
+                <div class="share-icons">
+                    <div class="share-icon-circle" style="background-color: #1DA1F2;"><i class="fab fa-twitter"></i></div>
+                    <div class="share-icon-circle" style="background-color: #3B5998;"><i class="fab fa-facebook-f"></i></div>
+                    <div class="share-icon-circle" style="background-color: #28A745;"><i class="fab fa-telegram-plane"></i></div>
+                    <div class="share-icon-circle" style="background-color: #25D366;"><i class="fab fa-whatsapp"></i></div>
+                </div>
+            </section>
+
+            <section class="view-team-section">
+                <button class="view-team-button">View The Team</button>
+            </section>
+
+            <section class="recharge-rebate-section">
+                <h3>Recharge</h3>
+                <div class="rebate-table">
+                    <div class="table-row header-row">
+                        <span>Levels</span>
+                        <span>Recharge rebate</span>
+                    </div>
+                    <div class="table-row">
+                        <span>Level 1</span>
+                        <span>10%</span>
+                    </div>
+                    </div>
+            </section>
+        </main>
+
+        <main id="profile-content" class="hidden">
+            <section class="profile-header-section">
+                <p class="greeting">Hello, Aditechdata!</p>
+                <p class="good-afternoon">Good Afternoon!</p>
+            </section>
+
+            <section class="balance-summary-grid">
+                <div class="balance-card">
+                    <h3>Deposit Balance</h3>
+                    <p>₦0.00</p>
+                </div>
+                <div class="balance-card">
+                    <h3>Withdraw Balance</h3>
+                    <p>₦300.00</p>
+                </div>
+            </section>
+
+            <section class="summary-details-grid">
+                <div class="summary-item">
+                    <span>Total Purchased</span>
+                    <span class="value">₦0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total Deposited</span>
+                    <span class="value">₦0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total Withdrawn</span>
+                    <span class="value">₦0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Total Income</span>
+                    <span class="value">₦0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Team Income</span>
+                    <span class="value">₦0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Today's Income</span>
+                    <span class="value">₦0.00</span>
+                </div>
+            </section>
+
+            <section class="action-buttons">
+                <button class="action-button blue-btn">Recharge</button>
+                <button class="action-button blue-btn">Withdraw</button>
+            </section>
+
+            <section class="profile-features-grid">
+                <div class="profile-feature-item">
+                    <div class="icon-box"><i class="fas fa-shopping-bag"></i></div>
+                    <span>My Purchased</span>
+                    <small>View your orders</small>
+                </div>
+                <div class="profile-feature-item">
+                    <div class="icon-box"><i class="fas fa-bank"></i></div>
+                    <span>My Bank</span>
+                    <small>Add/Update Withdrawal Account</small>
+                </div>
+                <div class="profile-feature-item">
+                    <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <span>Deposit Log</span>
+                    <small>View your deposit transactions</small>
+                </div>
+                <div class="profile-feature-item">
+                    <div class="icon-box"><i class="fas fa-history"></i></div>
+                    <span>Withdrawal Log</span>
+                    <small>View your withdrawal transactions</small>
+                </div>
+                <div class="profile-feature-item">
+                    <div class="icon-box"><i class="fas fa-sack-dollar"></i></div>
+                    <span>Income History</span>
+                    <small>View your profits</small>
+                </div>
+                <div class="profile-feature-item">
+                    <div class="icon-box"><i class="fas fa-users-viewfinder"></i></div>
+                    <span>Team Members</span>
+                    <small>View your referred team members</small>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <nav class="bottom-navigation">
+        <a href="#" id="home-nav" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" id="invest-nav" class="nav-item">
+            <i class="fas fa-money-bill-trend-up"></i>
+            <span>Invest</span>
+        </a>
+        <a href="#" id="invite-friends-nav" class="nav-item">
+            <i class="fas fa-user-plus"></i>
+            <span>Invite Friends</span>
+        </a>
+        <a href="#" id="profile-nav" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
